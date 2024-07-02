@@ -20,11 +20,11 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class HelloController {
     private static final String IP_INFO_URL = "http://ipinfo.io/{ip}/json";
-    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=NewYork&units=metric&appid=75a8dfa1c63a0090b854207cf11fbe42";
+    private static final String WEATHER_API_URL = "http://api.openweathermap.org/data/2.5/weather";
 
     private final String apiKey = "75a8dfa1c63a0090b854207cf11fbe42";
 
-    @GetMapping("/75a8dfa1c63a0090b854207cf11fbe42/hello-controller")
+    @GetMapping("/api/hello-controller")
     public HelloResponse hello(
             @RequestParam("visitor_name") String visitorName,
             HttpServletRequest request) {
@@ -36,7 +36,7 @@ public class HelloController {
         String location = ipInfo.getCity();
 
         // Fetch weather
-        WeatherResponse weatherResponse = restTemplate.getForObject(WEATHER_URL, WeatherResponse.class, location, apiKey);
+        WeatherResponse weatherResponse = restTemplate.getForObject(WEATHER_API_URL, WeatherResponse.class, location, apiKey);
         String temperature = weatherResponse.getMain().getTemp().toString();
 
         String greeting = "Hello, " + visitorName + "!, the temperature is " + temperature + " degrees Celsius in " + location;
