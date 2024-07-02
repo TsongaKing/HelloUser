@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 public class HelloUser {
     @GetMapping("/api/hello-user")
     public HelloResponse hello(
-            @RequestParam("visitor_name") String visitorName,
+            @RequestParam("Mark") String Mark,
             HttpServletRequest request) {
         String clientIp = request.getRemoteAddr();
         String location = "New York"; // Simplified for this example
-        String greeting = "Hello, " + visitorName + "!, the temperature is 11 degrees Celsius in " + location;
+        String greeting = "Hello, " + Mark + "!, the temperature is 11 degrees Celsius in " + location;
         return new HelloResponse(clientIp, location, greeting);
     }
 }
