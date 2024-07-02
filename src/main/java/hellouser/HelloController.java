@@ -26,7 +26,7 @@ public class HelloController {
 
     @GetMapping("/api/hello-controller")
     public HelloResponse hello(
-            @RequestParam("visitor_name") String visitorName,
+            @RequestParam("Mark") String Mark,
             HttpServletRequest request) {
         String clientIp = request.getRemoteAddr();
         RestTemplate restTemplate = new RestTemplate();
@@ -39,7 +39,7 @@ public class HelloController {
         WeatherResponse weatherResponse = restTemplate.getForObject(WEATHER_API_URL, WeatherResponse.class, location, apiKey);
         String temperature = weatherResponse.getMain().getTemp().toString();
 
-        String greeting = "Hello, " + visitorName + "!, the temperature is " + temperature + " degrees Celsius in " + location;
+        String greeting = "Hello, " + Mark + "!, the temperature is " + temperature + " degrees Celsius in " + location;
         return new HelloResponse(clientIp, location, greeting);
     }
 }
