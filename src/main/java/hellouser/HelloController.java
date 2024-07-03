@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class HelloController {
     private static final String IP_INFO_URL = "http://ipinfo.io/{ip}/json";
-    private static final String WEATHER_API_URL = "http://api.openweathermap.org/data/2.5/weather";
+    private static final String WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?q=NewYork,usa&appid=";
 
     private final String apiKey = "75a8dfa1c63a0090b854207cf11fbe42";
 
